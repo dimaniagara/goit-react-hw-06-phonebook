@@ -1,16 +1,27 @@
+import { Contacts } from './Contacts/Contacts';
+import { Phonebook } from './Phonebook/Phonebook';
+import { Filter } from './Filter/Filter';
+import { Box } from './Box';
+import { GlobalStyle } from './GlobalStyles';
+import { useSelector } from 'react-redux';
+
 export const App = () => {
+  const filter = useSelector(state => state.filter);
+  const contacts = useSelector(state => state.contacts);
+
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
-    </div>
+    <Box p="20px">
+      <h2>Phonebook</h2>
+      <Phonebook contacts={contacts} />
+
+      <h2>Contacts</h2>
+      <Filter />
+      <Contacts
+        contacts={contacts.filter(contact =>
+          contact.name.toLowerCase().includes(filter)
+        )}
+      />
+      <GlobalStyle />
+    </Box>
   );
 };
