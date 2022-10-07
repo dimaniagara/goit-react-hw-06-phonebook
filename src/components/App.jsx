@@ -1,4 +1,4 @@
-import { Contacts } from './Contacts/Contacts';
+// import { Contacts } from './Contacts/Contacts';
 import { Phonebook } from './Phonebook/Phonebook';
 import { Filter } from './Filter/Filter';
 import { Box } from './Box';
@@ -13,7 +13,7 @@ export const App = () => {
 
       <h2>Contacts</h2>
       <Filter />
-      <Contacts />
+      {/* <Contacts /> */}
       <GlobalStyle />
     </Box>
   );
