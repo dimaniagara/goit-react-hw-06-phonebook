@@ -1,9 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const contactsInitialState = [
-  { id: 0, name: 'Mike Tyson', number: 5948302 },
-  { id: 1, name: 'Ryan Gosling', number: 5948302 },
-  { id: 2, name: 'Elon Musk', number: 5948302 },
+  { id: 0, name: 'Brad Pitt', number: 5948302 },
+  { id: 1, name: 'Ryan Raynolds', number: 5948302 },
+  { id: 2, name: 'Tom Hanks', number: 5948302 },
 ];
 
 const contactsSlice = createSlice({

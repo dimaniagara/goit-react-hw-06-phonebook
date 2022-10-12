@@ -2,18 +2,22 @@
 import { useState } from 'react';
 import { nanoid } from 'nanoid';
 import { PhonebookForm } from './Phonebook.styled';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'redux/contactsSlice';
+import { getContacts } from 'redux/selectors';
 
-export const Phonebook = ({ contacts }) => {
+export const Phonebook = () => {
+  const contacts = useSelector(getContacts);
   const dispatch = useDispatch();
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
   const handleSubmit = event => {
     event.preventDefault();
+
     if (contacts.filter(e => e.name === name).length === 0) {
       dispatch(addContact(nanoid(), name, number));
+
       setName('');
       setNumber('');
     } else {
@@ -23,15 +27,7 @@ export const Phonebook = ({ contacts }) => {
 
   const handleChange = e => {
     const { name, value } = e.target;
-    if (name === 'name') {
-      setName(() => {
-        return value;
-      });
-    } else {
-      setNumber(() => {
-        return value;
-      });
-    }
+    name === 'name' ? setName(value) : setNumber(value);
   };
 
   return (
